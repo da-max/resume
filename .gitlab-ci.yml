@@ -3,8 +3,6 @@ image: registry.gitlab.com/islandoftex/images/texlive:latest
 build:
   script:
     - pdflatex cv.tex
-    - beaver cv
-    - pdflatex cv.tex
   after_script:
     - cat cv.log
   artifacts:
