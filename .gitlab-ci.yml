@@ -1,19 +1,18 @@
-image: registry.gitlab.com/islandoftex/images/texlive:latest
-
 stages:
-  - build
-  - upload
+    - build
+    - upload
 
 build:
-  stage: build
-  script:
-    - pdflatex -interaction=nonstopmode cv.tex > /dev/null
-  artifacts:
-    paths:
-      - cv.pdf
+    image: registry.gitlab.com/islandoftex/images/texlive:latest
+    stage: build
+    script:
+        - pdflatex cv.tex
+    artifacts:
+        paths:
+            - cv.pdf
 
 upload:
-  image: curlimages/curl:latest
-  stage: upload
-  script:
-    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file cv.pdf "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/cv/latest/cv.pdf"'
+    image: curlimages/curl:latest
+    stage: upload
+    script:
+        - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file cv.pdf "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/cv/latest/cv.pdf"'
