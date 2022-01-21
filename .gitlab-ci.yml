@@ -8,8 +8,6 @@ build:
   stage: build
   script:
     - pdflatex -interaction=nonstopmode cv.tex > /dev/null
-  after_script:
-    - cat cv.log
   artifacts:
     paths:
       - cv.pdf
