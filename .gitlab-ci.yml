@@ -7,7 +7,7 @@ stages:
 build:
   stage: build
   script:
-    - pdflatex cv.tex
+    - pdflatex -interaction=nonstopmode cv.tex
   after_script:
     - cat cv.log
   artifacts:
