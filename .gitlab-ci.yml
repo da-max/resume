@@ -3,7 +3,7 @@ stages:
     - upload
 
 build:
-    image: registry.gitlab.com/islandoftex/images/texlive:latest
+    image: ghcr.io/moderncv/debian-texlive-docker:main
     stage: build
     script:
         - latexmk -pdf -interaction=nonstopmode cv.tex
